@@ -49,10 +49,10 @@ func createOpenAIClient(opts providerClientOptions) openai.Client {
 		}
 	}
 
-	if config.Get().Options.Debug {
-		httpClient := log.NewHTTPClient()
-		openaiClientOptions = append(openaiClientOptions, option.WithHTTPClient(httpClient))
-	}
+	//if config.Get().Options.Debug {
+	httpClient := log.NewHTTPClient()
+	openaiClientOptions = append(openaiClientOptions, option.WithHTTPClient(httpClient))
+	//}
 
 	for key, value := range opts.extraHeaders {
 		openaiClientOptions = append(openaiClientOptions, option.WithHeader(key, value))

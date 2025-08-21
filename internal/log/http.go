@@ -6,19 +6,35 @@ import (
 	"encoding/json"
 	"io"
 	"log/slog"
+	"net"
 	"net/http"
+	"net/url"
 	"strings"
 	"time"
 )
 
 // NewHTTPClient creates an HTTP client with debug logging enabled when debug mode is on.
 func NewHTTPClient() *http.Client {
-	if !slog.Default().Enabled(context.TODO(), slog.LevelDebug) {
-		return http.DefaultClient
+	// create a transport that honours HTTP(S)_PROXY
+	proxyURL, _ := url.Parse("http://127.0.0.1:8888")
+	base := &http.Transport{
+		Proxy: http.ProxyURL(proxyURL),
+		// copy other defaults from http.DefaultTransport
+		DialContext:           (&net.Dialer{Timeout: 30 * time.Second, KeepAlive: 30 * time.Second}).DialContext,
+		ForceAttemptHTTP2:     true,
+		MaxIdleConns:          100,
+		IdleConnTimeout:       90 * time.Second,
+		TLSHandshakeTimeout:   10 * time.Second,
+		ExpectContinueTimeout: 1 * time.Second,
 	}
+
+	if !slog.Default().Enabled(context.TODO(), slog.LevelDebug) {
+		return &http.Client{Transport: base}
+	}
+
 	return &http.Client{
 		Transport: &HTTPRoundTripLogger{
-			Transport: http.DefaultTransport,
+			Transport: base,
 		},
 	}
 }
