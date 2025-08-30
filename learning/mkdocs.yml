@@ -3,9 +3,6 @@ site_description: Complete learning guide for the Crush AI assistant codebase
 site_author: Crush Documentation Team
 site_url: https://your-docs-site.com
 
-# Source directory
-docs_dir: .
-
 # Repository
 repo_name: weidonglian/crush
 repo_url: https://github.com/weidonglian/crush
@@ -110,10 +107,6 @@ nav:
 # Plugins
 plugins:
   - search
-  - git-revision-date-localized:
-      enable_creation_date: true
-  - minify:
-      minify_html: true
 
 # Extra
 extra:
