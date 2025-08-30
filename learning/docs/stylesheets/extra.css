@@ -1,0 +1,166 @@
+/* Custom CSS for Crush Documentation */
+
+/* Root variables for theming */
+:root {
+    --crush-primary: #2563eb;
+    --crush-accent: #3b82f6;
+    --crush-success: #10b981;
+    --crush-warning: #f59e0b;
+    --crush-error: #ef4444;
+}
+
+/* Enhanced code blocks */
+.highlight pre {
+    border-left: 4px solid var(--crush-accent);
+    background: var(--md-code-bg-color) !important;
+}
+
+/* Tutorial level badges */
+.tutorial-level {
+    display: inline-block;
+    padding: 4px 12px;
+    border-radius: 16px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    margin-bottom: 1rem;
+}
+
+.level-beginner {
+    background: rgba(16, 185, 129, 0.1);
+    color: var(--crush-success);
+    border: 1px solid rgba(16, 185, 129, 0.3);
+}
+
+.level-intermediate {
+    background: rgba(245, 158, 11, 0.1);
+    color: var(--crush-warning);
+    border: 1px solid rgba(245, 158, 11, 0.3);
+}
+
+.level-advanced {
+    background: rgba(239, 68, 68, 0.1);
+    color: var(--crush-error);
+    border: 1px solid rgba(239, 68, 68, 0.3);
+}
+
+/* Duration indicators */
+.duration {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.875rem;
+    color: var(--md-default-fg-color--light);
+    margin-bottom: 1rem;
+}
+
+.duration::before {
+    content: "⏱️";
+}
+
+/* Goal callouts */
+.goal-callout {
+    background: linear-gradient(135deg, rgba(37, 99, 235, 0.1), rgba(59, 130, 246, 0.05));
+    border: 1px solid rgba(37, 99, 235, 0.2);
+    border-radius: 8px;
+    padding: 1rem;
+    margin: 1rem 0;
+}
+
+.goal-callout h4 {
+    color: var(--crush-primary);
+    margin: 0 0 0.5rem 0;
+}
+
+/* Enhanced admonitions */
+.md-typeset .admonition.tip {
+    border-color: var(--crush-success);
+}
+
+.md-typeset .admonition.warning {
+    border-color: var(--crush-warning);
+}
+
+.md-typeset .admonition.danger {
+    border-color: var(--crush-error);
+}
+
+/* Navigation improvements */
+.md-nav__item--active>.md-nav__link {
+    color: var(--crush-primary);
+    font-weight: 600;
+}
+
+/* Code copy button styling */
+.md-clipboard {
+    border-radius: 4px;
+}
+
+.md-clipboard:hover {
+    background-color: var(--crush-accent);
+}
+
+/* Table improvements */
+.md-typeset table:not([class]) {
+    border: 1px solid var(--md-typeset-table-color);
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.md-typeset table:not([class]) th {
+    background: rgba(37, 99, 235, 0.1);
+    color: var(--crush-primary);
+    font-weight: 600;
+}
+
+/* Architecture diagram styling */
+.architecture-diagram {
+    background: linear-gradient(135deg, #f8fafc, #f1f5f9);
+    border: 1px solid #e2e8f0;
+    border-radius: 12px;
+    padding: 1.5rem;
+    margin: 1.5rem 0;
+    text-align: center;
+}
+
+/* Exercise boxes */
+.exercise-box {
+    background: rgba(245, 158, 11, 0.05);
+    border: 2px solid rgba(245, 158, 11, 0.2);
+    border-radius: 8px;
+    padding: 1rem;
+    margin: 1rem 0;
+}
+
+.exercise-box h4 {
+    color: var(--crush-warning);
+    margin: 0 0 0.5rem 0;
+}
+
+/* Progress indicators */
+.progress-indicator {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: var(--md-primary-fg-color--light);
+    color: white;
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    margin: 1rem 0;
+    font-size: 0.875rem;
+}
+
+/* Responsive improvements */
+@media screen and (max-width: 768px) {
+
+    .tutorial-level,
+    .duration {
+        display: block;
+        margin-bottom: 0.5rem;
+    }
+
+    .architecture-diagram {
+        padding: 1rem;
+        font-size: 0.875rem;
+    }
+}
